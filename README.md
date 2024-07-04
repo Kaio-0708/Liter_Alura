@@ -28,6 +28,8 @@ Para executar a aplicação:
 1. Configure as credenciais do banco de dados PostgreSQL em `application.properties`.
 2. Execute a aplicação utilizando Spring Boot:
 3. Use o menu interativo para explorar as funcionalidades disponíveis.
+![Captura de tela 2024-07-04 204026](https://github.com/Kaio-0708/Liter_Alura/assets/123708201/7cff41cf-5cf8-4e71-bf84-8f55b3ca647a)
+
 
 ## Contribuição
 
