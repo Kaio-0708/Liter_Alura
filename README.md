@@ -1,12 +1,11 @@
 # Literalura
 
 ## Descrição
-O projeto Literatura é uma aplicação Java que integra dados de livros e autores utilizando a API Gutendex e armazenamento em um banco de dados PostgreSQL. Ele oferece funcionalidades para listar livros por título, idioma, autores vivos em um ano específico, estatísticas como contagem de livros por idioma, e exibe os top 10 livros mais baixados.
+O projeto Literatura é uma aplicação Java que integra dados de livros e autores utilizando a API Gutendex e armazenamento em um banco de dados PostgreSQL. Ele oferece funcionalidades para listar livros por título, idioma, autores vivos em um ano específico e estatísticas como contagem de livros por idioma.
 
 ## Funcionalidades
 
 - Listagem de livros por título, idioma e autores vivos em um ano específico.
-- Busca dos top 10 livros mais baixados.
 - Integração com API Gutendex para busca dinâmica de livros.
 - Armazenamento e consulta de dados em banco de dados PostgreSQL.
 - Estatísticas de contagem de livros por idioma.
