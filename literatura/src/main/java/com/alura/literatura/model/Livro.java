@@ -10,13 +10,19 @@ public class Livro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
     private Long id;
-
     private String titulo;
-
     private String autor;
-
+    private int anoPublicacao = 0;
     private String idioma;
     private int numeroDownloads;
+
+    public int getAnoPublicacao() {
+        return anoPublicacao;
+    }
+
+    public void setAnoPublicacao(int anoPublicacao) {
+        this.anoPublicacao = anoPublicacao;
+    }
 
     public Long getId() {
         return id;
