@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class LivroService {
 
     @Autowired
@@ -25,21 +26,28 @@ public class LivroService {
     @Autowired
     private ConverteDados converteDados;
 
-    @Transactional(readOnly = true)
     public Livro buscarLivroPorTitulo(String titulo) {
 
-            List<Livro> livros = livroRepository.findByTituloIgnoreCaseContaining(titulo);
-            if (livros != null && !livros.isEmpty()) {
-                return livros.get(0);
-            }
-
-            List<Livro> livrosAPI = converteDados.converterLivros(consumoApi.buscarLivroPorTitulo(titulo));
-            if (livrosAPI != null && !livrosAPI.isEmpty()) {
-                return livrosAPI.get(0);
-            }
-
-            return null;
+        List<Livro> livros = livroRepository.findByTituloIgnoreCaseContaining(titulo);
+        if (!livros.isEmpty()) {
+            return livros.get(0);
         }
+
+        List<Livro> livrosAPI = converteDados.converterLivros(consumoApi.buscarLivroPorTitulo(titulo));
+        if (!livrosAPI.isEmpty()) {
+            Livro livroAPI = livrosAPI.get(0);
+
+
+            if (livroAPI.getAnoPublicacao() == 0) {
+                livroAPI.setAnoPublicacao(2024);
+            }
+
+            livroRepository.save(livroAPI);
+            return livroAPI;
+        }
+
+        return null;
+    }
 
     @Transactional(readOnly = true)
     public List<Livro> buscarTodos() {
@@ -60,5 +68,4 @@ public class LivroService {
     public List<Autor> findAutoresVivosPorAno(int ano) {
         return autorRepository.findByAnoNascimentoLessThanEqualAndAnoMorteGreaterThanEqual(ano, ano);
     }
-
 }
