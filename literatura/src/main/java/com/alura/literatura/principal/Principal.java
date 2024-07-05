@@ -28,51 +28,54 @@ public class Principal implements CommandLineRunner {
     }
 
     public void exibeMenu() {
-        int opcao = -1;
+        try (Scanner scanner = new Scanner(System.in)) {
+            int opcao = -1;
 
-        while (opcao != 0) {
-            System.out.println("1. Buscar livro pelo título");
-            System.out.println("2. Listar todos os livros");
-            System.out.println("3. Listar todos os autores");
-            System.out.println("4. Listar autores vivos em um determinado ano");
-            System.out.println("5. Listar livros por idioma");
+            while (opcao != 0) {
+                System.out.println("1. Buscar livro pelo título");
+                System.out.println("2. Listar todos os livros");
+                System.out.println("3. Listar todos os autores");
+                System.out.println("4. Listar autores vivos em um determinado ano");
+                System.out.println("5. Listar livros por idioma");
 
-            System.out.println("0. Sair");
-            System.out.print("Escolha uma opção: ");
+                System.out.println("0. Sair");
+                System.out.print("Escolha uma opção: ");
 
-            try {
-                opcao = scanner.nextInt();
-                scanner.nextLine();
+                try {
+                    opcao = scanner.nextInt();
+                    scanner.nextLine();
 
-                switch (opcao) {
-                    case 1:
-                        buscarLivroPorTitulo();
-                        break;
-                    case 2:
-                        listarTodosLivros();
-                        break;
-                    case 3:
-                        listarTodosAutores();
-                        break;
-                    case 4:
-                        listarAutoresVivosPorAno();
-                        break;
-                    case 5:
-                        listarLivrosPorIdioma();
-                        break;
-                    case 0:
-                        System.out.println("Saindo...");
-                        break;
-                    default:
-                        System.out.println("Opção inválida. Tente novamente.");
+                    switch (opcao) {
+                        case 1:
+                            buscarLivroPorTitulo();
+                            break;
+                        case 2:
+                            listarTodosLivros();
+                            break;
+                        case 3:
+                            listarTodosAutores();
+                            break;
+                        case 4:
+                            listarAutoresVivosPorAno();
+                            break;
+                        case 5:
+                            listarLivrosPorIdioma();
+                            break;
+                        case 0:
+                            System.out.println("Saindo...");
+                            break;
+                        default:
+                            System.out.println("Opção inválida. Tente novamente.");
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Entrada inválida. Por favor, digite um número.");
+                    scanner.nextLine();
                 }
-            } catch (InputMismatchException e) {
-                System.out.println("Entrada inválida. Por favor, digite um número.");
-                scanner.nextLine();
+            }
+        }  catch (Exception e) {
+                System.out.println("Ocorreu um erro ao executar a aplicação: " + e.getMessage());
             }
         }
-        scanner.close();
-    }
 
     private void buscarLivroPorTitulo() {
         System.out.print("Digite o título: ");
