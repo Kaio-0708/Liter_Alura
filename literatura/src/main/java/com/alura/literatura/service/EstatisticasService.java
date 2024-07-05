@@ -9,7 +9,6 @@ public class EstatisticasService {
 
     @Autowired
     private LivroRepository livroRepository;
-
     public Long contarLivrosPorIdioma(String idioma) {
         return livroRepository.countByIdiomaIgnoreCase(idioma);
     }
