@@ -61,10 +61,4 @@ public class LivroService {
         return autorRepository.findByAnoNascimentoLessThanEqualAndAnoMorteGreaterThanEqual(ano, ano);
     }
 
-    @Transactional(readOnly = true)
-    public List<Livro> listarTop10LivrosMaisBaixados() {
-        ResultadosAPI resultados = (ResultadosAPI) consumoApi.buscarTop10LivrosMaisBaixados();
-        List<Livro> livros = resultados.getResultados();
-        return livros.subList(0, Math.min(livros.size(), 10)); // Retorna apenas os top 10 livros
-    }
 }
