@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -104,5 +103,4 @@ public class JsonUtils {
             throw new RuntimeException("Erro ao converter JSON para objeto LivroJson", e);
         }
     }
-
 }
